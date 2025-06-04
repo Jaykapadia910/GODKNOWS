@@ -1,0 +1,164 @@
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sorry</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+  :root {
+    --warm-bg-start: #f6d365;
+    --warm-bg-end: #fda085;
+    --text-color: #5b2c2c;
+    --button-bg: #8b5e3c;
+    --button-hover-bg: #a76f44;
+    --button-text: #f9f1e7;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--warm-bg-start), var(--warm-bg-end));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .container {
+    max-width: 600px;
+    background: rgba(255 255 255 / 0.85);
+    padding: 2.5rem 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgb(139 94 60 / 0.4);
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.15em;
+  }
+  .message {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin: 1.8rem 0 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  button {
+    background-color: var(--button-bg);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 40px;
+    color: var(--button-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    box-shadow: 0 5px 10px rgb(139 94 60 / 0.4);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  button:hover, button:focus {
+    background-color: var(--button-hover-bg);
+    outline: none;
+  }
+
+  /* Smooth fade transitions */
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="app">
+  <h1 id="main-text">SORRYYYYY</h1>
+  <div id="content-area">
+    <div class="buttons" id="button-options">
+      <button id="okay-btn" aria-label="Its okay jayyy">its okay jayyy</button>
+      <button id="nope-btn" aria-label="Nope">nope</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const mainText = document.getElementById('main-text');
+  const contentArea = document.getElementById('content-area');
+  const okayBtn = document.getElementById('okay-btn');
+  const nopeBtn = document.getElementById('nope-btn');
+
+  const sorrowMessage = `
+    <p class="message">
+      I m so sorry yaar...i just cant leave you ,bhai sab chhod tu meri very achhi dost...aise kaise give up kr skta hu terpe...tu kaise soch skti h ki terko dur jaane dunga,,,
+      seriously?...i hate the fact u going merse dur..i hate the distance between us...still i'll beg...pls chhodna mat
+    </p>
+  `;
+
+  function showOptions() {
+    contentArea.innerHTML = \`
+      <div class="buttons" id="button-options">
+        <button id="okay-btn" aria-label="Its okay jayyy">its okay jayyy</button>
+        <button id="nope-btn" aria-label="Nope">nope</button>
+      </div>
+    \`;
+    // Re-attach event listeners after re-render
+    document.getElementById('okay-btn').addEventListener('click', onOkayClick);
+    document.getElementById('nope-btn').addEventListener('click', onNopeClick);
+  }
+
+  function showSorrowMessage() {
+    contentArea.innerHTML = sorrowMessage;
+  }
+
+  function onOkayClick() {
+    mainText.textContent = 'SORRYYYYY';
+    showSorrowMessage();
+  }
+
+  function onNopeClick() {
+    mainText.textContent = 'SORRYYYYY';
+    showOptions();
+  }
+
+  // Attach event listeners initially
+  okayBtn.addEventListener('click', onOkayClick);
+  nopeBtn.addEventListener('click', onNopeClick);
+</script>
+
+</body>
+</html>
+```

@@ -44,12 +44,15 @@
     margin: 0 0 1rem 0;
     letter-spacing: 0.15em;
   }
+
   .message {
     font-size: 1.25rem;
     line-height: 1.5;
     margin: 1.8rem 0 1.5rem;
     font-weight: 500;
     color: var(--text-color);
+    display: none;
+    /* Start hidden */
   }
 
   .buttons {
@@ -78,29 +81,6 @@
     background-color: var(--button-hover-bg);
     outline: none;
   }
-
-  /* Smooth fade transitions */
-  .fade-enter {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  .fade-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .fade-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-exit-active {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
 </style>
 </head>
 <body>
@@ -112,51 +92,33 @@
       <button id="okay-btn" aria-label="Its okay jayyy">its okay jayyy</button>
       <button id="nope-btn" aria-label="Nope">nope</button>
     </div>
+    <p class="message" id="sorrow-message">
+      I m so sorry yaar...i just cant leave you ,bhai sab chhod tu meri very achhi dost...aise kaise give up kr skta hu terpe...tu kaise soch skti h ki terko dur jaane dunga,,,
+      seriously?...i hate the fact u going merse dur..i hate the distance between us...still i'll beg...pls chhodna mat
+    </p>
   </div>
 </div>
 
 <script>
   const mainText = document.getElementById('main-text');
-  const contentArea = document.getElementById('content-area');
+  const buttonsContainer = document.getElementById('button-options');
+  const sorrowMessage = document.getElementById('sorrow-message');
   const okayBtn = document.getElementById('okay-btn');
   const nopeBtn = document.getElementById('nope-btn');
 
-  const sorrowMessage = `
-    <p class="message">
-      I m so sorry yaar...i just cant leave you ,bhai sab chhod tu meri very achhi dost...aise kaise give up kr skta hu terpe...tu kaise soch skti h ki terko dur jaane dunga,,,
-      seriously?...i hate the fact u going merse dur..i hate the distance between us...still i'll beg...pls chhodna mat
-    </p>
-  `;
-
-  function showOptions() {
-    contentArea.innerHTML = \`
-      <div class="buttons" id="button-options">
-        <button id="okay-btn" aria-label="Its okay jayyy">its okay jayyy</button>
-        <button id="nope-btn" aria-label="Nope">nope</button>
-      </div>
-    \`;
-    // Re-attach event listeners after re-render
-    document.getElementById('okay-btn').addEventListener('click', onOkayClick);
-    document.getElementById('nope-btn').addEventListener('click', onNopeClick);
-  }
-
-  function showSorrowMessage() {
-    contentArea.innerHTML = sorrowMessage;
-  }
-
-  function onOkayClick() {
+  okayBtn.addEventListener('click', () => {
+    // On "its okay jayyy"
     mainText.textContent = 'SORRYYYYY';
-    showSorrowMessage();
-  }
+    buttonsContainer.style.display = 'none';
+    sorrowMessage.style.display = 'block';
+  });
 
-  function onNopeClick() {
+  nopeBtn.addEventListener('click', () => {
+    // On "nope" - revert to original options
     mainText.textContent = 'SORRYYYYY';
-    showOptions();
-  }
-
-  // Attach event listeners initially
-  okayBtn.addEventListener('click', onOkayClick);
-  nopeBtn.addEventListener('click', onNopeClick);
+    sorrowMessage.style.display = 'none';
+    buttonsContainer.style.display = 'flex';
+  });
 </script>
 
 </body>
